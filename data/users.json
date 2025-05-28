@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "1f5225d3-bf2f-40bd-af30-1dd509d277ce",
+    "name": "tester1",
+    "email": "tester1@test.com",
+    "password": "$2b$10$irjUaeL6q4XjdNjUGSOwveg3AU/bb1uWJoy/eNchcqY7fJ9S8ap..",
+    "balance": 50
+  },
+  {
+    "id": "c3a664ed-ac02-4a7f-ab2c-efc30808aae9",
+    "name": "tester2",
+    "email": "tester2@test.com",
+    "password": "$2b$10$5LlHIKYQfAHaCSDyR.UTKeo8hyvgTvY2BttnAEN7fpO1R3EDk2fLO",
+    "balance": 150
+  }
+]
