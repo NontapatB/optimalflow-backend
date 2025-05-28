@@ -1,5 +1,7 @@
 # OptimalFlow Backend Developer Exercise
 
+Thank you for giving me the opportunity to be tested.
+
 This is a backend API built with **Node.js (Express)** that simulates a basic user system for testing backend knowledge. Data is stored in a simple file-based JSON format (`users.json`), and JWT is used for authentication.
 
 ## Features
