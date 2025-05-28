@@ -37,7 +37,7 @@ This is a backend API built with **Node.js (Express)** that simulates a basic us
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/NontapatB/optimalflow-backend.git
+git clone https://github.com/NontapatB/optimalflow-backend-exercise.git
 cd optimalflow-backend
 ```
 
