@@ -1,4 +1,4 @@
-const { createUser, loginUser, getAllUsers, getUserById } = require('../services/userService');
+const { createUser, loginUser, getAllUsers, getUserById, transferBalance, generateToken } = require('../services/userService');
 
 async function postUser(req, res) {
   const { name, email, password } = req.body;
@@ -23,7 +23,8 @@ async function postLogin(req, res){
 
   try {
     const user = await loginUser(email, password);
-    res.status(200).json(user);
+    const token = generateToken(user.id);
+    res.status(200).json({token, user});
   } catch (err) {
     res.status(401).json({ message: err.message });
   }
@@ -48,5 +49,22 @@ async function getUserByIdHandler(req, res) {
   }
 }
 
+function postTransfer(req, res) {
+  const { fromId, toId, amount } = req.body;
 
-module.exports = { postUser, postLogin, getUsers, getUserByIdHandler };
+  console.log("test transfer", { fromId, toId, amount });
+  
+  if (!fromId || !toId || typeof amount !== 'number' || amount <= 0) {
+    return res.status(400).json({ message: 'Invalid transfer request' });
+  }
+
+  try {
+    const result = transferBalance(fromId, toId, amount);
+    res.status(200).json(result);
+  } catch (err) {
+    console.error('Transfer error:', err);
+    res.status(500).json({ message: err.message || 'Server error' });
+  }
+}
+
+module.exports = { postUser, postLogin, getUsers, getUserByIdHandler, postTransfer };

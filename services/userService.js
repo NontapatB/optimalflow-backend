@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } = require('uuid');
 const User = require('../models/userModel');
 const { readUsers, writeUsers } = require('../utils/fileStorage');
+const jwt = require('jsonwebtoken');
 
 async function createUser(name, email, password) {
   const users = readUsers();
@@ -43,4 +44,48 @@ function getUserById(id) {
   return safeUser
 }
 
-module.exports = { createUser, loginUser, getAllUsers, getUserById };
+function transferBalance(fromId, toId, amount) {
+
+  const users = readUsers();
+
+  console.log("TRANSFER DEBUG: fromId =", fromId);
+  console.log("TRANSFER DEBUG: toId =", toId);
+  console.log("TRANSFER DEBUG: All user IDs =", users.map(u => u.id));
+
+  if (fromId === toId) {
+    throw new Error('Cannot transfer to the same account');
+  }
+
+  const fromUser = users.find(user => user.id === fromId);
+  const toUser = users.find(user => user.id === toId);
+
+  if (!fromUser || !toUser) {
+    throw new Error('One or both users not found');
+  }
+
+  if (typeof amount !== 'number' || amount <= 0) {
+    throw new Error('Invalid transfer amount');
+  }
+
+  if (fromUser.balance < amount) {
+    throw new Error('Insufficient balance');
+  }
+
+  fromUser.balance -= amount;
+  toUser.balance += amount;
+
+  writeUsers(users);
+  return {
+    message: 'Transfer successful',
+    from: { id: fromUser.id, balance: fromUser.balance },
+    to: { id: toUser.id, balance: toUser.balance },
+    amount: amount
+  };
+
+}
+
+function generateToken(userId) {
+  return jwt.sign({ id: userId}, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN || '1h'});
+}
+
+module.exports = { createUser, loginUser, getAllUsers, getUserById, transferBalance, generateToken };
