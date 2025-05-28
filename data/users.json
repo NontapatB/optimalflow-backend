@@ -5,5 +5,26 @@
     "email": "john@example.com",
     "password": "$2b$10$VDFvFY01WgAZTFPhAnn9We2KfuoCAz6QaP5jiO0myv0sDgLUd6aeG",
     "balance": 100
+  },
+  {
+    "id": "e1d19dec-041a-4222-b4a3-a13d8b724ea6",
+    "name": "nontapat1",
+    "email": "nontapat1@test.com",
+    "password": "$2b$10$U.ldM4EH9w8YlXpb35Qm0uS97JghVvTdFQd16gTov16cUUGlvfSv2",
+    "balance": 100
+  },
+  {
+    "id": "36613b5e-d3e7-457b-98bd-1c763ee7e83f",
+    "name": "nontapat2",
+    "email": "nontapat2@test.com",
+    "password": "$2b$10$IvGM5FxzQP6zQ1AfjMi48uHsSKz8MlO8ZFrstfdH2EJDvRmQ/TDnS",
+    "balance": 100
+  },
+  {
+    "id": "e1a8a889-10ee-47a2-bab4-7738a3008fd0",
+    "name": "nontapat3",
+    "email": "nontapat3@test.com",
+    "password": "$2b$10$dymB6yHxp3pqUzWMP9eXL.IdBOq2dbEKY3WqDoA2M1apeuJvg75HK",
+    "balance": 100
   }
 ]

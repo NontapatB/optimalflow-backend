@@ -1,4 +1,4 @@
-const { createUser, loginUser, getAllUsers } = require('../services/userService');
+const { createUser, loginUser, getAllUsers, getUserById } = require('../services/userService');
 
 async function postUser(req, res) {
   const { name, email, password } = req.body;
@@ -38,4 +38,15 @@ async function getUsers(req, res) {
   }
 }
 
-module.exports = { postUser, postLogin, getUsers };
+async function getUserByIdHandler(req, res) {
+  const { id } = req.params;
+  try {
+    const user = await getUserById(id);
+    res.json(user);
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+}
+
+
+module.exports = { postUser, postLogin, getUsers, getUserByIdHandler };

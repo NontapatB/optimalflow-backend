@@ -34,4 +34,13 @@ function getAllUsers() {
   return users.map(({ password, ...rest }) => rest); // ลบ password ออก
 }
 
-module.exports = { createUser, loginUser, getAllUsers };
+function getUserById(id) {
+  const users = readUsers();
+  const user = users.find(user => user.id === id);
+  if(!user) throw new Error('User not found');
+  const { password, ...safeUser } = user;
+
+  return safeUser
+}
+
+module.exports = { createUser, loginUser, getAllUsers, getUserById };
