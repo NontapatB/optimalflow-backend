@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "c752e999-7551-4131-8978-c6ceea96d704",
+		"name": "Backend-Exercise-API",
+		"description": "StartFragmentThis API allows user registration, authentication using JWT, listing users, and transferring balance between users. It is built with **Node.js (Express)** and stores data in a simple `users.json` file. This documentation outlines how to use each endpoint.EndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37369421",
+		"_collection_link": "https://www.postman.com/aerospace-cosmonaut-20795478/workspace/my-workspace/collection/37369421-c752e999-7551-4131-8978-c6ceea96d704?action=share&source=collection_link&creator=37369421"
+	},
+	"item": [
+		{
+			"name": "Add User1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"tester1\",\r\n    \"email\": \"tester1@test.com\",\r\n    \"password\": \"tester1password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add User2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"tester1\",\r\n    \"email\": \"tester1@test.com\",\r\n    \"password\": \"tester1password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"tester1@test.com\",\r\n    \"password\": \"tester1password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"tester1\",\r\n    \"email\": \"tester1@test.com\",\r\n    \"password\": \"tester1password\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User By Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"tester1\",\r\n    \"email\": \"tester1@test.com\",\r\n    \"password\": \"tester1password\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/[created id on users.json]",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"[created id on users.json]"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer Between User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{vault:authorization-secret}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fromId\" : \"1f5225d3-bf2f-40bd-af30-1dd509d277ce\",\r\n    \"toId\": \"c3a664ed-ac02-4a7f-ab2c-efc30808aae9\",\r\n    \"amount\" : 50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/transfer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
