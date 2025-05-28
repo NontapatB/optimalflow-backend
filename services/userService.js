@@ -17,4 +17,21 @@ async function createUser(name, email, password) {
   return safeUser;
 }
 
-module.exports = { createUser };
+async function loginUser(email, password) {
+  const users = readUsers();
+  const user = users.find(u => u.email === email);
+  if (!user) throw new Error('User not found');
+
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) throw new Error('Invalid password');
+
+  const { password: _, ...safeUser } = user;
+  return safeUser;
+}
+
+function getAllUsers() {
+  const users = readUsers();
+  return users.map(({ password, ...rest }) => rest); // ลบ password ออก
+}
+
+module.exports = { createUser, loginUser, getAllUsers };
