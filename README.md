@@ -48,7 +48,7 @@ npm install
 
 ### 3. Create `.env` file
 ```env
-JWT_SECRET=NONTAPAT_SECRET_KEY
+JWT_SECRET=YOUROWN_SECRET_KEY
 JWT_EXPIRES_IN=1h
 PORT=3000
 ```
