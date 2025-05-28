@@ -6,6 +6,7 @@ const app = require('../app');
 const dataPath = path.join(__dirname, '../data/users.json');
 
 describe('Integration Test: User creation, login, and transfer', () => {
+
   test('should create users, login, and transfer balance successfully', async () => {
     // Reset users.json
     fs.writeFileSync(dataPath, '[]');
@@ -46,7 +47,6 @@ describe('Integration Test: User creation, login, and transfer', () => {
         toId: user2.id,
         amount: 50
       });
-
     expect(transferRes.statusCode).toBe(200);
     expect(transferRes.body).toMatchObject({
       message: 'Transfer successful',

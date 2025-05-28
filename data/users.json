@@ -1,16 +1,1 @@
-[
-  {
-    "id": "92635a8f-fab1-4ca4-9bf7-ed3304e6e6a4",
-    "name": "Bright",
-    "email": "bright@test.com",
-    "password": "$2b$10$m8MHWW6xXXuexlJMX5pKKu1x9ZJvqzPNf.5T8N.8VFvZDCXZnjbj6",
-    "balance": 50
-  },
-  {
-    "id": "368ca454-4166-462c-ba56-45aa084d7085",
-    "name": "Boss",
-    "email": "boss@test.com",
-    "password": "$2b$10$VXeAkUFVyGjXuxHMcrjPTOKXZfkHaYVcj9OxpnjQ0LQ5XhiTmlCGi",
-    "balance": 150
-  }
-]
+[]

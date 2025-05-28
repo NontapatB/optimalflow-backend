@@ -1,5 +1,9 @@
 const express = require('express');
-const { postUser, postLogin, getUsers, getUserByIdHandler, postTransfer } = require('../controllers/userController');
+const { postUser, 
+        postLogin, 
+        getUsers, 
+        getUserByIdHandler, 
+        postTransfer } = require('../controllers/userController');
 const { authenticateToken } = require('../middleware/authMiddleware');
 
 const router = express.Router();

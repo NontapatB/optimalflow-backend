@@ -1,8 +1,10 @@
 const { createUser, loginUser, getAllUsers, getUserById, transferBalance, generateToken } = require('../services/userService');
 
 async function postUser(req, res) {
+
   const { name, email, password } = req.body;
-  console.log(req.body);
+  
+  // Validate input
   if (!name || !email || !password) {
     return res.status(400).json({ message: 'Missing fields' });
   }
@@ -16,11 +18,15 @@ async function postUser(req, res) {
 }
 
 async function postLogin(req, res){
+
   const { email, password } = req.body;
+
+  // Validate input
   if (!email || !password) {
     return res.status(400).json({ message: 'Missing fields' });
   }
 
+  // Login user and generate token
   try {
     const user = await loginUser(email, password);
     const token = generateToken(user.id);
@@ -31,6 +37,8 @@ async function postLogin(req, res){
 }
 
 async function getUsers(req, res) {
+
+  // Get all users
   try {
     const users = getAllUsers();
     res.json(users);
@@ -40,7 +48,10 @@ async function getUsers(req, res) {
 }
 
 async function getUserByIdHandler(req, res) {
+
   const { id } = req.params;
+
+  // Get user by ID
   try {
     const user = await getUserById(id);
     res.json(user);
@@ -50,14 +61,15 @@ async function getUserByIdHandler(req, res) {
 }
 
 function postTransfer(req, res) {
-  const { fromId, toId, amount } = req.body;
 
-  console.log("test transfer", { fromId, toId, amount });
+  const { fromId, toId, amount } = req.body;
   
+  // Validate transfer request
   if (!fromId || !toId || typeof amount !== 'number' || amount <= 0) {
     return res.status(400).json({ message: 'Invalid transfer request' });
   }
 
+  // Transfer balance
   try {
     const result = transferBalance(fromId, toId, amount);
     res.status(200).json(result);
@@ -67,4 +79,8 @@ function postTransfer(req, res) {
   }
 }
 
-module.exports = { postUser, postLogin, getUsers, getUserByIdHandler, postTransfer };
+module.exports = { postUser, 
+                   postLogin, 
+                   getUsers, 
+                   getUserByIdHandler, 
+                   postTransfer };
